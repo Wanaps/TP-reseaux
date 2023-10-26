@@ -15,7 +15,7 @@ def find_command(arg) -> int:
 result = ""
 
 def ping(arg) -> str:
-    cmd = "ping " + arg + " > nul"
+    cmd = "ping -c 1" + arg + ">> /dev/null"
 
     if (system(cmd) == 0):
         return("UP !")
