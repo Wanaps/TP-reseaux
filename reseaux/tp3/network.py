@@ -12,7 +12,6 @@ def find_command(arg) -> int:
     else:
         return None
 
-command = find_command(argv[1])
 result = ""
 
 def ping(arg) -> str:
@@ -31,14 +30,15 @@ def ip() -> None:
 def lookup(arg) -> str:
     return gethostbyname(arg)
 
-match command:
-    case 1:
-        result = ping(argv[2])
-    case 2:
-        result = lookup(argv[2])
-    case 3:
-        result = ip()
-    case None:
-        result = "Déso frérot c'est non"
+command = find_command(argv[1])
+
+if (command == 1):
+    result = ping(argv[2])
+elif (command == 2):
+    result = lookup(argv[2])
+elif (command == 3):
+    result = ip()
+else:
+    result = "Déso frérot c'est non"
 
 print(result)
