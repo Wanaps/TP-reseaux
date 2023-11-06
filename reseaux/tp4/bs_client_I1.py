@@ -16,8 +16,8 @@ s.close()
 
 if not data:
     print("Pas de réponse.")
-    exit(-1)
+    sys.exit(-1)
 
 print(f"réponse : {repr(data)}")
 
-exit(0)
+sys.exit(0)
