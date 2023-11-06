@@ -20,6 +20,6 @@ except socket.error:
     sys.exit(1)
 
 
-print(f"réponse : {repr(data)}")
+print(f"réponse : {repr(data).decode()}")
 
 sys.exit(0)
