@@ -47,7 +47,7 @@ NETMASK=255.255.255.0
 
 - on vient chopper son ip:
 ```bash
-[user@localhost tp4]$ ip a
+[user@localhost ~]$ ip a
 
 [...]
 3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
@@ -68,7 +68,7 @@ success
 
 - on check si c'est ok :
 ```bash
-[user@localhost tp4]$ sudo firewall-cmd --list-all
+[user@localhost ~]$ sudo firewall-cmd --list-all
 public (active)
 [...]
   ports: 13337/tcp 80/tcp
@@ -107,3 +107,26 @@ IPADDR=10.1.1.13
 NETMASK=255.255.255.0
 ```
 
+- on lui rafraîchit la tronche v2 :
+```bash
+[user@localhost ~]$ sudo systemctl restart NetworkManager
+[sudo] password for user:
+[user@localhost ]$
+```
+
+- on clone, on cd, on éxecute!
+```bash
+    [user@localhost tp4]$ python bs_client_I1.py
+réponse : b'Salut mec.'
+```
+
+oh! comme par magie le serveur nous dit salut
+
+- la pov du serveur :
+```bash
+[user@localhost tp4]$ python bs_server_I1.py
+Connected by ('10.1.1.13', 48756)
+Données reçues: b'MEOOOOOOO !'
+```
+
+insane mais réel
