@@ -12,7 +12,7 @@ txt = input("Que veux-tu envoyer au serveur : ")
 
 
 try:
-    s.sendall(txt)
+    s.sendall(txt.encode())
     data = s.recv(1024)
     print(f"Connecté avec succès au serveur {host} sur le port {port}")
 except socket.error:
