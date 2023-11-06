@@ -4,7 +4,6 @@ import re
 
 host = '10.1.1.11'
 port = 13337
-pattern = '(\b\Bmeo\B\b)'
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -12,8 +11,15 @@ s.connect((host, port))
 
 txt = input("Que veux-tu envoyer au serveur : ")
 
+x = re.search('meo|waf', txt)
+
 if (txt.type() != str):
     print("frère c'est pas une string")
+    sys.exit(1)
+elif (x):
+    pass
+else:
+    print("il faut que tu mettes soit 'meo' soit 'waf' poto")
     sys.exit(1)
 
 
