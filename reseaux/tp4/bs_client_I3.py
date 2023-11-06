@@ -13,8 +13,8 @@ txt = input("Que veux-tu envoyer au serveur : ")
 
 x = re.search('meo|waf', txt)
 
-if (txt.type() != str):
-    print("frère c'est pas une string")
+if (type(txt) != str):
+    print("frère t'as pas mis une string")
     sys.exit(1)
 elif (x):
     pass
