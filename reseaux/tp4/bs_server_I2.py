@@ -10,14 +10,17 @@ s.listen(1)
 conn, addr = s.accept()
 print(f"Un client vient de se co et son IP c'est {addr[0]}.")
 
+response = data.decode()
+
 while True:
 
     try:
         data = conn.recv(1024)
+        data = data.decode()
         if not data: break
-        if (data.decode() == "meo"):
+        if (data == "meo"):
             conn.sendall("Meo à toi confrère.".encode())
-        elif (data.decode() == "waf"):
+        elif (data == "waf"):
             conn.sendall("ptdr t ki".encode())
         else:
             conn.sendall("Mes respects humble humain.".encode())
