@@ -23,3 +23,9 @@ while True:
         break
 
 conn.close()
+
+# dans la vm :
+#
+# [user@localhost tp4]$ sudo firewall-cmd --add-port=13337/tcp --permanent
+# [sudo] password for user:
+# success
