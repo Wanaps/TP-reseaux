@@ -8,15 +8,19 @@ s.bind((host, port))
 
 s.listen(1)
 conn, addr = s.accept()
-print('Connected by', addr)
+print(f"Un client vient de se co et son IP c'est {addr}.")
 
 while True:
 
     try:
         data = conn.recv(1024)
         if not data: break
-        print(f"Données reçues: {data}")
-        conn.sendall("Salut mec.".encode())
+        if (data == "meo"):
+            conn.sendall("Meo à toi confrère.".encode())
+        elif (data == "waf"):
+            conn.sendall("ptdr t ki".encode())
+        else:
+            conn.sendall("Mes respects humble humain.".encode())
 
     except socket.error:
         print("Erreur de connexion.")
