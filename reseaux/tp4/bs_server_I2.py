@@ -16,7 +16,7 @@ while True:
         data = conn.recv(1024)
         if not data: break
         if (data.decode() == "meo"):
-            conn.sendall("Meo à toi confrère.".encode())
+            conn.sendall("Meo à toi confrère.")
             break
         elif (data.decode() == "waf"):
             conn.sendall("ptdr t ki".encode())
