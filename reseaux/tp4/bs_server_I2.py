@@ -8,7 +8,7 @@ s.bind((host, port))
 
 s.listen(1)
 conn, addr = s.accept()
-print(f"Un client vient de se co et son IP c'est {addr}.")
+print(f"Un client vient de se co et son IP c'est {addr[0]}.")
 
 while True:
 
@@ -17,8 +17,10 @@ while True:
         if not data: break
         if (data.decode() == "meo"):
             conn.sendall("Meo à toi confrère.".encode())
+            break
         elif (data.decode() == "waf"):
             conn.sendall("ptdr t ki".encode())
+            break
         else:
             conn.sendall("Mes respects humble humain.".encode())
 
