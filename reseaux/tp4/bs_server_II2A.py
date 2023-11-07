@@ -47,4 +47,4 @@ try:
         print("Erreur de connexion.")
 finally:    
     conn.close()
-    socket.close()
+    s.close()
