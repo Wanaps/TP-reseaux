@@ -1,7 +1,5 @@
 import argparse
 import socket
-import sys
-import re
 
 parser = argparse.ArgumentParser()
 
@@ -16,33 +14,25 @@ elif (args.port >= 0 and args.port <= 1024):
     print("ERROR Le port spécifié est un port privilégié. Spécifiez un port au dessus de 1024.")
     exit(2)
 
-host = '10.1.1.11'
+host = ''
 port = args.port
-
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((host, port))
+s.listen(1)
+conn, addr = s.accept()
+print(f"Un client vient de se co et son IP c'est {addr[0]}.")
+while True:
+    try:
+        data = conn.recv(1024)
+        if not data: break
+        if (data.decode() == "meo"):
+            conn.sendall("Meo à toi confrère.".encode())
+        elif (data.decode() == "waf"):
+            conn.sendall("ptdr t ki".encode())
+        else:
+            conn.sendall("Mes respects humble humain.".encode())
 
-s.connect((host, port))
-
-txt = input("Que veux-tu envoyer au serveur : ")
-
-x = re.search('meo|waf', txt)
-
-if (type(txt) != str):
-    raise TypeError("Frère t'as pas mis une string")
-elif (x):
-    pass
-else:
-    raise ValueError("Frère t'as pas mis un mot correct")
-
-try:
-    s.sendall(txt.encode())
-    data = s.recv(1024)
-    print(f"Connecté avec succès au serveur {host} sur le port {port}")
-except socket.error:
-    print("pas de bol anatole, ça a foiré")
-    sys.exit(1)
-
-
-print(f"réponse : {repr(data.decode())}")
-
-sys.exit(0)
+    except socket.error:
+        print("Erreur de connexion.")
+        
+conn.close()
