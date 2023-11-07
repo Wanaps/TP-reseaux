@@ -41,9 +41,9 @@ while True:
             response = "ptdr t ki"
         else:
             response = "Mes respects humble humain."
+        conn.sendall(response.encode())
+        logging.info(f"Réponse envoyée au client {addr[0]} : {response}.")
     except socket.error:
         print("Erreur de connexion.")
         
-conn.sendall(response.encode())
-logging.info(f"Réponse envoyée au client {addr[0]} : {response}.")
 conn.close()
