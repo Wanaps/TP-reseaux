@@ -14,8 +14,7 @@ txt = input("Que veux-tu envoyer au serveur : ")
 x = re.search('meo|waf', txt)
 
 if (type(txt) != str):
-    print("frère t'as pas mis une string")
-    sys.exit(1)
+    raise TypeError("Frère t'as pas mis une string")
 elif (x):
     pass
 else:
