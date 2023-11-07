@@ -18,8 +18,7 @@ if (type(txt) != str):
 elif (x):
     pass
 else:
-    print("il faut que tu mettes soit 'meo' soit 'waf' poto")
-    sys.exit(1)
+    raise ValueError("Frère t'as pas mis un mot correct")
 
 
 try:
