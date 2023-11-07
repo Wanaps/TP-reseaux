@@ -1,7 +1,6 @@
 import argparse
 import socket
 import logging
-import logging
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--port", action="store", type=int, default="13337", help="specify the port to connect to")
@@ -29,7 +28,7 @@ conn, addr = s.accept()
 print(f"Un client vient de se co et son IP c'est {addr[0]}.")
 logging.info(f"Un client {addr[0]} s'est connecté.")
 
-response = ""
+response = "error"
 
 while True:
     try:
