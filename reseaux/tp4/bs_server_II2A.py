@@ -46,6 +46,5 @@ while True:
         print("Erreur de connexion.")
         
 conn.send(response)
-logging.info(f"Réponse envoyée au client {addr[0]} : {response.decode()}.")
-
 conn.close()
+logging.info(f"Réponse envoyée au client {addr[0]} : {response.decode()}.")
