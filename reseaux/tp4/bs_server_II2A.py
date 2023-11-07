@@ -28,22 +28,23 @@ conn, addr = s.accept()
 print(f"Un client vient de se co et son IP c'est {addr[0]}.")
 logging.info(f"Un client {addr[0]} s'est connecté.")
 
-response = "error"
-
-while True:
+response = ""
+try:
     try:
-        data = conn.recv(1024)
-        if not data: break
-        logging.info(f"Le client {addr[0]} a envoyé {data.decode()}.")
-        if (data.decode() == "meo"):
-            response = "Meo à toi confrère."
-        elif (data.decode() == "waf"):
-            response = "ptdr t ki"
-        else:
-            response = "Mes respects humble humain."
-        conn.sendall(response.encode())
-        logging.info(f"Réponse envoyée au client {addr[0]} : {response}.")
+        while True:
+            data = conn.recv(1024)
+            if not data: break
+            logging.info(f"Le client {addr[0]} a envoyé {data.decode()}.")
+            if (data.decode() == "meo"):
+                response = "Meo à toi confrère."
+            elif (data.decode() == "waf"):
+                response = "ptdr t ki"
+            else:
+                response = "Mes respects humble humain."
+            conn.sendall(response.encode())
+            logging.info(f"Réponse envoyée au client {addr[0]} : {response}.")
     except socket.error:
         print("Erreur de connexion.")
-        
-conn.close()
+finally:    
+    conn.close()
+    socket.close()
