@@ -37,14 +37,14 @@ while True:
         if not data: break
         logging.info(f"Le client {addr[0]} a envoyé {data.decode()}.")
         if (data.decode() == "meo"):
-            response = "Meo à toi confrère.".encode()
+            response = "Meo à toi confrère."
         elif (data.decode() == "waf"):
-            response = "ptdr t ki".encode()
+            response = "ptdr t ki"
         else:
-            response = "Mes respects humble humain.".encode()
+            response = "Mes respects humble humain."
     except socket.error:
         print("Erreur de connexion.")
         
-conn.send(response)
+conn.sendall(response.encode())
 conn.close()
 logging.info(f"Réponse envoyée au client {addr[0]} : {response.decode()}.")
