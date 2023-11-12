@@ -1,6 +1,7 @@
 import argparse
 import socket
 import logging
+import colorlog
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--port", action="store", type=int, default="13337", help="specify the port to connect to")
@@ -8,6 +9,7 @@ args = parser.parse_args()
 
 logging.basicConfig(filename='/var/log/bs_server/bs_server.log', encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
+logger = colorlog.getLogger()   
 
 if (args.port < 0 or args.port > 65535):
     print("ERROR Le port spécifié n'est pas un port possible (de 0 à 65535).")
@@ -20,7 +22,7 @@ host = ''
 port = args.port
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((host, port))
-logging.info(f"Le serveur tourne sur {port}.")
+logging.info(f"Le serveur tourne sur {port}.", extra={'colorlog': 'blue'})
 s.listen(1)
 
 conn, addr = s.accept()
