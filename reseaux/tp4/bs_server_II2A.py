@@ -1,7 +1,6 @@
 import argparse
 import socket
 import logging
-import colorlog
 from colorama import Fore, Style
 
 
