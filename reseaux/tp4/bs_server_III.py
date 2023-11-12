@@ -1,8 +1,9 @@
 import argparse
 import socket
 import logging
-from colorama import Fore, Style
 import time
+from colorama import Fore, Style
+import colorlog
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--port", action="store", type=int, default="13337", help="specify the port to connect to")
