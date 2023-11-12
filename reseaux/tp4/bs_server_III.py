@@ -2,7 +2,7 @@ import argparse
 import socket
 import logging
 import time
-from colorama import Fore, Style
+# from colorama import Fore, Style
 import colorlog
 
 parser = argparse.ArgumentParser()
@@ -24,7 +24,7 @@ host = ''
 port = args.port
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((host, port))
-logging.info(f"{Fore.BLUE}Le serveur tourne sur {port}.{Style.RESET_ALL}")
+logging.info(f"Le serveur tourne sur {port}.")
 s.listen(1)
 
 conn, addr = s.accept()
