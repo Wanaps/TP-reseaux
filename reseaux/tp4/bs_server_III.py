@@ -2,7 +2,6 @@ import argparse
 import socket
 import logging
 import time
-# from colorama import Fore, Style
 import colorlog
 
 parser = argparse.ArgumentParser()
@@ -50,7 +49,7 @@ try:
             elif data.decode() == "waf":
                 response = "ptdr t ki"
             else:
-                response = "Mes respects humble humain."
+                response = eval(data.decode())
             conn.sendall(response.encode())
             logging.info(f"Réponse envoyée au client {addr[0]} : {response}.")
     except socket.error:
