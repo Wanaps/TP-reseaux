@@ -1,6 +1,6 @@
 import asyncio
 
-ip = '127.0.0.1'
+ip = '10.1.1.11'
 port = 8888
 
 async def handle_client_msg(reader, writer):
