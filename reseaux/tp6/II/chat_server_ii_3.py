@@ -1,9 +1,11 @@
 import asyncio
 
-ip = '10.1.1.11'
+ip = "127.0.0.1"
 port = 8888
 
-async def handle_client_msg(reader, writer):
+# do a server with asyncronous functions. every message the server receive should be printed in the terminal like this "Message received from {IP}:{Port} : {msg}"
+
+async def handle_packet(reader, writer):
     while True:
 
         data = await reader.read(1024)
@@ -13,19 +15,17 @@ async def handle_client_msg(reader, writer):
             break
 
         message = data.decode()
-        print(f"Message received {addr[0]}:{addr[1]} : {data.decode()}")
-
-        writer.write(f"Hello {addr[0]}:{addr[1]}".encode())
-        await writer.drain()
-
+        print(f"Message received from {addr[0]}:{addr[1]} : {message!r}")
+        
+        
 async def main():
-    server = await asyncio.start_server(handle_client_msg, ip, port)
+    server = await asyncio.start_server(handle_packet, ip, port)
 
     addrs = ', '.join(str(sock.getsockname()) for sock in server.sockets)
     print(f'Serving on {addrs}')
 
     async with server:
         await server.serve_forever()
-
+        
 if __name__ == "__main__":
     asyncio.run(main())
