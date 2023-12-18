@@ -3,8 +3,6 @@ import asyncio
 ip = "127.0.0.1"
 port = 8888
 
-# do a server with asyncronous functions. every message the server receive should be printed in the terminal like this "Message received from {IP}:{Port} : {msg}"
-
 async def handle_packet(reader, writer):
     while True:
 
@@ -16,7 +14,6 @@ async def handle_packet(reader, writer):
 
         message = data.decode()
         print(f"Message received from {addr[0]}:{addr[1]} : {message!r}")
-        
         
 async def main():
     server = await asyncio.start_server(handle_packet, ip, port)

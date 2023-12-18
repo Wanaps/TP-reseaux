@@ -18,12 +18,23 @@ async def send_message(writer):
         await writer.drain()
 
 async def main():
+    pseudo = set_and_send_pseudo()
     reader, writer = await asyncio.open_connection(ip, port)
+    
+    greetings = f"Hello|{pseudo}"
+    writer.write(greetings.encode())
+    await writer.drain()
     
     receive_task = asyncio.create_task(receive_messages(reader))
     send_task = asyncio.create_task(send_message(writer))
     
     await asyncio.gather(receive_task, send_task)
+    
+def set_and_send_pseudo() -> str:
+    pseudo = ""
+    while (pseudo == ""):
+        pseudo = input("Enter your pseudo: ")
+    return pseudo
 
 if __name__ == "__main__":
     try:
