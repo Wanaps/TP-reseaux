@@ -1,6 +1,9 @@
 import asyncio
 import websockets
 
+ip = "127.0.0.1"
+port = 8888
+
 async def hello(websocket):
     msg = await websocket.recv()
     print(f"<<< {msg}")
@@ -10,7 +13,7 @@ async def hello(websocket):
 
 
 async def main():
-    async with websockets.serve(hello, "10.1.2.1", 8888):
+    async with websockets.serve(hello, ip, port):
         await asyncio.Future()  # run forever
 
 if __name__ == "__main__":
